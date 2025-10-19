@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 220 40% 6%;
+    --foreground: 200 20% 98%;
+
+    --card: 220 35% 10%;
+    --card-foreground: 200 20% 98%;
+
+    --popover: 220 35% 10%;
+    --popover-foreground: 200 20% 98%;
+
+    --primary: 190 100% 50%;
+    --primary-foreground: 220 40% 6%;
+
+    --secondary: 220 30% 15%;
+    --secondary-foreground: 200 20% 98%;
+
+    --muted: 220 25% 20%;
+    --muted-foreground: 200 10% 65%;
+
+    --accent: 190 100% 50%;
+    --accent-foreground: 220 40% 6%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 200 20% 98%;
+
+    --border: 220 30% 20%;
+    --input: 220 30% 18%;
+    --ring: 190 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --gradient-hero: linear-gradient(135deg, hsl(220, 40%, 6%) 0%, hsl(220, 35%, 12%) 50%, hsl(190, 60%, 15%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(190, 100%, 50% / 0.15) 0%, transparent 70%);
+    --gradient-accent: linear-gradient(90deg, hsl(190, 100%, 50%) 0%, hsl(200, 100%, 60%) 100%);
+    
+    --glow-cyan: 0 0 40px hsl(190 100% 50% / 0.3);
+    --glow-blue: 0 0 60px hsl(190 100% 50% / 0.2);
+    
+    --glass-bg: hsl(220 35% 15% / 0.4);
+    --glass-border: hsl(190 100% 50% / 0.2);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+  }
+  
+  .glow-text {
+    text-shadow: var(--glow-cyan);
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+  
+  @keyframes rotate-ring {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .animate-ring {
+    animation: rotate-ring 20s linear infinite;
+  }
+}
